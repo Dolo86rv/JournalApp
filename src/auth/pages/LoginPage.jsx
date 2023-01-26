@@ -9,7 +9,7 @@ import { AuthLayout } from '../layout/AuthLayout'
 export const LoginPage = () => {
     const dispatch = useDispatch()
     const { email, password, onInputChange, formState} = useForm({
-        email: 'dolor86@google.com',
+        email: 'dolorv86@gmail.com',
         password: '123456' 
     })
 
@@ -18,8 +18,7 @@ export const LoginPage = () => {
         dispatch( checkingAuthentication() )
     }
 
-    const onGoogleSignIn = (event) => {
-        console.log('onGoogleSignIn')
+    const onGoogleSignIn = () => {
         dispatch( startGoogleSignIn() )
     }
     return (
