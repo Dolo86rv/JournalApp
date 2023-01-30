@@ -7,6 +7,12 @@ import { useForm } from '../../hooks'
 import { checkingAuthentication, startGoogleSignIn } from '../../store/auth'
 import { AuthLayout } from '../layout/AuthLayout'
 
+const formValidations = {
+    email: [(value) => value.includes('@'), 'El correo debe tener una @'],
+    password: [(value) => value.length >= 6, 'El password debe de tener mas de 6 caracteres'],
+    displayName: [(value) => value.length >= 1, 'El nombre es obligatorio'],
+}
+
 export const LoginPage = () => {
     
     const { status } = useSelector(state => state.auth)
@@ -15,7 +21,7 @@ export const LoginPage = () => {
     const { email, password, onInputChange, formState} = useForm({
         email: 'dolorv86@gmail.com',
         password: '123456' 
-    })
+    }, formValidations )
 
     const isAuthenticating = useMemo(() => status === 'checking', [status]) 
 
