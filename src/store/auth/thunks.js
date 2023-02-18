@@ -4,7 +4,6 @@ import { checkingCredentials, logout, loggin } from "./authSlice"
 
 export const checkingAuthentication = ( email, password ) =>{
     return async( dispatch ) => {
-
         dispatch(checkingCredentials())
     }
 }
@@ -16,6 +15,8 @@ export const startGoogleSignIn = () => {
         dispatch(checkingCredentials())
         
         const result = await signInWithGoogle()
+        console.log({ result })
+
         if ( !result.ok ) return dispatch( logout(result.errorMessage))
 
         dispatch( loggin( result ))
