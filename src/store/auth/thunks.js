@@ -15,8 +15,7 @@ export const startGoogleSignIn = () => {
         dispatch(checkingCredentials())
         
         const result = await signInWithGoogle()
-        console.log({ result })
-
+        
         if ( !result.ok ) return dispatch( logout(result.errorMessage))
 
         dispatch( loggin( result ))
@@ -34,7 +33,7 @@ export const startCreatingUserWithEmailPassword = ({ email, password, displayNam
         
         if( !ok ) return dispatch( logout({errorMessage}))
 
-        dispatch( loggin({ uid, displayName, email, photoURL}))
+        dispatch( loggin({ok, password, uid, displayName, email, photoURL}))
     }
 }
 
@@ -45,8 +44,7 @@ export const startLoginWithEmailPassword = ({ email, password}) => {
         dispatch(checkingCredentials())
 
         const resp = await loginWithEmailPassword({ email, password })
-        console.log(resp)
-
+        
         if( !resp.ok ) return dispatch( logout( resp ))
         dispatch(loggin( resp ))
 
@@ -57,7 +55,7 @@ export const startLogout = () => {
 
         await logoutFirebase()
         dispatch( clearNotesLogout())
-        dispatch( logout({ }) )
+        dispatch( logout({}) )
     }
 }
 
