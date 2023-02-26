@@ -50,7 +50,7 @@ const firebaseConfig = {
     appId: VITE_APPID,
 };
 
-console.log(firebaseConfig);
+//console.log(firebaseConfig);
 
 // Initialize Firebase
 //const analytics = getAnalytics(app);
